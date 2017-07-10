@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PK Airlines</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/slide.css">
+		<style>
+			
+			#main
+			{
+				float:right;
+				height:100%;
+				width:65%;
+				margin-left:5%;
+				margin-right:17%;
+				background-color:#d9d9d9;
+				padding : 10px;
+			}
+		
+		</style>
+    </head>
+    <body>
+	
+		
+		<div id ="main">
+
+		<form action ="Book.php" method = "post" />
+			<p id = "norm"><b>Flight :</b><br/>
+			
+
+
+			From <input type="text" name="Source">
+			
+			<img src="~/images/arrow.png" height="25px" width="25px"> 
+			
+			To
+			
+			
+
+			<input type="text" name="Destination"> <br/>
+			
+			<hr width="95%" /></p>
+			<p id="norm">
+			Departing :<br/> 
+
+			<input type="date" name="dDate" ><br/>
+
+			Arrival:<br/>
+
+			<input type="date" name="aDate" >
+			</p>
+			<hr width="95%" />
+			<p id="norm">
+			
+				<html>
+			<form action="TicketIssue.php" method="post"/>
+				Enter the Flight ID :
+			 
+				<input type = "number" name = "Book_ID"> 
+				<input type = "submit" name = "submit2" value = "BOOK">
+			</form>
+				</html>
+			
+			
+			<br/><br/>
+			<input type="submit" name = "submit" value="Search">
+			
+		</form>
+		</div>
+		
+    </body>
+</html>

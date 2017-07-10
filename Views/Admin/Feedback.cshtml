@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+@model List<WebApplication4.Models.Feedback>
+<html>
+    <head>
+        <title>Admin Panel</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/cs1.css">
+		<style>
+		
+			label
+			{
+				display: inline-block;
+				float: left;
+				clear: left;
+				width: 250px;
+				text-align: right;
+			}
+			input 
+			{
+				display: inline-block;
+				float: left;
+			}
+		
+		</style>
+	</head>
+	
+	<body style="background-color:lightblue;">
+	
+		<div id ="banner" >
+		<li><a id="normhead" href='@Url.Action("admin","Admin")'>Admin Panel</a></li></ul>
+		</div>
+		
+        <div id="nav">
+            <h1 id="normhead" style="text-align:center">PK Airlines</h1>
+            <br /><br /><br /><br />
+            <ul style="list-style-type:none">
+                <li><a id="list1" href='@Url.Action("MF","Admin")'>Manage Flights</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("MJ","Admin")'>Manage Jets</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("S","Admin")'>Settings</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("Feedback","Admin")'>FeedBack</a></li>
+                <br />
+                <li><a id="list1" href="/Admin/Alogout">log Out</a></li>
+                <br />
+            </ul>
+        </div>
+		
+		
+		
+		<table id = "t1" style="width:55%">
+			<tr>
+				<th>Feedback ID</th>
+				<th>User Id</th>
+				<th>Submission Date</th>
+				<th>Message</th>
+				
+
+			</tr>
+		
+						@{
+                            foreach (var m in Model)
+                            {
+                                <tr>
+                                    <td>@m.fbid</td>
+                                    <td>@m.fpid</td>
+                                    <td>@m.subdate</td>
+                                    <td>@m.message</td>
+                                    
+                                    
+                                </tr>
+                            }
+
+                        }
+						
+				<br/>
+		
+		
+		
+			<hr width="80%">
+		
+		
+		
+		</div>
+	</body>

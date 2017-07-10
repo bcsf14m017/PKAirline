@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+@model List<WebApplication4.Models.Jet>
+<html>
+    <head>
+        <title>Admin Panel</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/cs1.css">
+		<style>
+		
+			label
+			{
+				display: inline-block;
+				float: left;
+				clear: left;
+				width: 250px;
+				text-align: right;
+			}
+			input 
+			{
+				display: inline-block;
+				float: left;
+			}
+		
+		</style>
+	</head>
+	
+	<body>
+	
+		<div id ="banner" >
+		<li><a id="normhead" href='@Url.Action("admin", "Admin")'>Admin Panel</a></li></ul>
+		</div>
+		
+        <div id="nav">
+            <h1 id="normhead" style="text-align:center">PK Airlines</h1>
+            <br /><br /><br /><br />
+            <ul style="list-style-type:none">
+                <li><a id="list1" href='@Url.Action("MF","Admin")'>Manage Flights</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("MJ","Admin")'>Manage Jets</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("S","Admin")'>Settings</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("Feedback","Admin")'>FeedBack</a></li>
+                <br />
+                <li><a id="list1" href="/Admin/Alogout">log Out</a></li>
+                <br />
+            </ul>
+        </div>
+		
+		<div id="main">
+			<p>
+			Jet Management:
+			</p>
+		<form action ="/Admin/MJ1" method = "post" />
+		
+			<label>Jet ID</label>
+			<input type="text" name="J_ID" value="">
+			
+			</br>
+			<label>Capacity</label>
+			<input type="number" name="J_Capacity" value="">
+			
+			</br>
+			<label>Fuel Capacity</label>
+			<input type="number" name="Fuel_Capacity" value="">
+			
+			</br>
+			<label>Luggage Capacity</label>
+			<input type="number" name="Luggage_Capacity" value="">
+			
+			</br><br/>
+			<input style="text-align:center ; margin-left:200px; width:90px;" type = "submit" name="submitAJ" value = "Add A Jet"><br/>
+			<hr width="80%">
+		</form>
+		
+		
+		
+		<form action ="/Admin/MJ2" method = "post" />
+		
+			<label>Jet ID</label>
+            <input type="text" name="J_ID" value="">
+			
+			</br><br/>
+			<input style="text-align:center ; margin-left:200px; width:100px;" type = "submit" name="submitRJ" value = "Remove A Jet"><br/><br/><br/>
+		</form>
+		
+
+		<table id = "t1" style="width:60%; height:30%;">
+			<tr>
+				<th>Jet ID</th>
+				<th>Jet Capacity</th>
+				<th>Fuel Capacity</th>
+				<th>Luggage Capacity</th>
+                <th>Edit</th>
+
+			</tr>
+
+		        @{  
+                    foreach (var m in Model)
+                    {
+
+						<tr>
+							<td>@m.jid</td>
+							<td>@m.j_capacity</td>
+							<td>@m.fuel_capacity</td>
+							<td>@m.luggage_capacity</td>
+                            <td>
+                                <a href="/Admin/editJets?jid=@m.jid"><h5>Edit</h5></a>
+                            </td>
+							
+						</tr>
+                    }
+
+                 }
+
+				<br/>
+		
+		
+		
+		
+		</div>
+	</body>
+	

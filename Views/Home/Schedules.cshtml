@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+@model List<WebApplication4.Models.Flight>
+<html>
+    <head>
+        <title>PK Airlines</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/slide.css">
+		<style>
+			
+			#main
+			{
+				float:right;
+				height:100%;
+				width:65%;
+				margin-left:5%;
+				margin-right:17%;
+				background-color:#d9d9d9;
+				padding : 10px;
+			}
+			table, th, td 
+			{
+				margin-left:auto;
+				margin-right:auto;
+				border: 1px solid black;
+				border-collapse: collapse;
+			}
+			th, td 
+			{
+				padding: 5px;
+				text-align: left;
+			}
+			table#t1 tr:nth-child(even) 
+			{
+				background-color: #eee;
+			}
+			table#t1 tr:nth-child(odd) 
+			{
+			   background-color:#fff;
+			}
+			table#t1 th 
+			{
+				background-color: black;
+				color: white;
+			}
+			
+		</style>
+    </head>
+    <body>
+
+        <div id="upperbar" style="margin-bottom:0px;">
+
+
+        </div>
+
+        <div id="navbar" style="margin-top:0px;">
+            <h1 style="padding-left:5%; float:left;">PK Airlines</h1>
+            <ul>
+                <a id="nav2" href="/Home/logout">Logout</a>
+                <a id="nav2" href='@Url.Action("Contact","Home")'>Contact Us</a>
+                <a id="nav2" href='@Url.Action("userPage","Home")'>User Info</a>
+                <a id="nav2" href='@Url.Action("Schedules","Home")'>Schedules</a>
+                <a id="nav2" href='@Url.Action("Status","Home")'>Flight Status</a>
+                <a id="nav2" href='@Url.Action("Book","Home")'>Book Flight</a>
+                <a id="nav2" href='@Url.Action("home","Home")'>Home</a>
+
+            </ul>
+        </div>
+		<div id ="main">
+            <h1>Schedules. </h1>
+
+		<table id = "t1" style="width:90%">
+		<tr>
+			<th>Flight ID</th>
+			<th>Source</th>
+			<th>Destination</th>
+			@*<th>Departure Date</th>
+			<th>Arrival Date</th>*@
+			<th>Price($)</th>
+		</tr>
+			
+						@{
+                            foreach (var m in Model)
+                            {
+                                <tr>
+                                    <td>@m.fid</td>
+                                    <td>@m.source</td>
+                                    <td>@m.destination</td>
+                                    @*<td>@m.dep_date</td>
+                                    <td>@m.arr_date</td>*@
+                                    <td>@m.seat_cost</td>
+                                </tr>
+                            }
+
+                        }
+            
+            </div>
+         
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Login</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			body
+			{	
+                background-color:lightblue;
+				margin:0px;
+				width:100%;
+				font-family: Century Gothic,‘Lucida Grande’, sans-serif;
+			}
+			head
+			{
+				margin:0px;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+			}
+			#upperbar
+			{
+				width:100%;
+				height:70px;
+				margin-top:0px;
+				background:black;
+			}
+			#lowerbar
+			{
+				width:100%;
+				height:70px;
+				margin-bottom:0px;
+				background:black;
+			}
+			#main
+			{
+				height:100%;
+				width:65%;
+				margin-left:auto;
+				margin-right:auto;
+				background-color:lightblue;
+				padding-left:auto;
+				padding-right: auto;
+			}
+
+		</style>
+		
+	</head>
+	
+	<body>
+		<div id = "upperbar"></div>
+		<div id = "main">	
+		<form action ="/Admin/AdminLogin1" method = "post" />
+            
+			<br/><img src="~/images/admin.ico" height="350px" width="350px" align="middle"><br/>
+            
+			<h5>@ViewBag.Error</h5>
+			<p align="center">Admin ID<br/>
+			
+
+			
+			
+
+			<input type="text" name="name" align="center"><br/>
+			Password<br/>
+			
+			<input type="password" name="pass" align="center"><br/><br/>
+			<input type="submit" name = "submit" value = "login" align="center">
+			</p>
+		</form>
+		<br/>
+		<br/>
+		</div>
+		<div id = "lowerbar"></div>
+	</body>
+</html>

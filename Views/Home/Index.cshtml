@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PK Airlines</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			body
+			{	
+				width:100%;
+				background-image: url(../images/lg.png);
+				height:auto;
+				overflow-x:hidden;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+			}
+			
+			#login
+			{
+				height:400px;
+				width :300px;
+				background-color:white;
+				padding:10px;
+				margin-left:10%;
+				box-shadow: 10px 10px 5px #404040;
+			}
+			
+			#head1
+			{
+				width:50%;
+				height:100px;
+				margin-left:10%;
+				color : #f2f2f2;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+			}
+			
+			#in{
+			margin:left:auto;
+			margin-right:auto;
+			text-align:center;
+			}
+			
+			p 
+			{
+				text-align:center;
+			}
+			
+		</style>
+		
+	</head>
+	
+	<body background >
+		
+		<br/><br/><br/>
+		<h1 id="head1" style="color=red">One Account.<br/>Your Gateway to the World.</h1></br>
+		<br/><br/>
+		<div id="login">	
+		<form action ="/Home/Login1" method = "post" />
+            <h5>@ViewBag.Error</h5>
+
+			<p style="font-size:20px ; color:black ; text-align:center">Sign In to Continue</p><br/>
+
+			
+				
+			<p>
+				Email 
+				
+				<input style="width=300px" name="email" type="text">
+
+			<br/><br/>
+			 Password
+			
+			<input type="password" name = "pass"><br/>
+			
+			<br/>
+                
+			</p>
+			<input style="text-align:center ; margin-left:100px; width:90px;" type="submit" name="submit" value ="Log In" ><br/>
+		</form>
+			<br/><br/>
+            <a href="/home/forgotpassword">Forget Password </a>
+            <br />
+           
+			<p>Don't have A Account yet?
+            <br/>
+            <br/>
+            <a  href ='@Url.Action("signup","Home")'>
+			<input  style="text-align:center ;  padding-left:70px margin-left:100px ; width:90px;" type="submit" name="sign" value ="SignUp" >
+		    </a>
+			</p>
+           
+		
+		</div>
+		
+	
+	</body>
+	
+	
+</html>

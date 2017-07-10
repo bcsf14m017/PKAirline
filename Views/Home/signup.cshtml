@@ -1,0 +1,162 @@
+@model WebApplication4.Models.Passenger
+<!DOCTYPE html>
+ 
+<html>
+    <head>
+        <title>PK Airlines</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        @System.Web.Optimization.Scripts.Render("/Scripts/jquery-3.1.1.js")
+
+
+		<style>
+			body
+			{	
+				width:100%;
+				background-image: url(../images/terminal.jpg);
+				height:auto;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+				overflow-x:hidden;
+			}
+			
+			#signup
+			{
+				float:right;
+				height:auto;
+				width :300px;
+				background-color:white;
+				padding-top:10px;
+				padding-left:30px;
+				padding-right:30px;
+				padding-bottom:30px;
+				margin-right:50px;
+				margin-top:50px;
+				margin-bottom:50px;
+				box-shadow: 10px 10px 5px #404040;
+			}
+			
+			#head
+			{
+				float:left;
+				width:50%;
+				height:100px;
+				margin-left:10%;
+				color : black;
+				font-family: Century Gothic, ‘Lucida Grande’, sans-serif;
+			}
+				
+			
+			#in{
+			margin:left:auto;
+			margin-right:auto;
+			text-align:center;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+				<a href='@Url.Action("Index","Home")'> <img src="~/images/backButton.png" style = "width:50px;height:50px;border:0;"></a>
+		<div id="signup">
+			<p style="font-size:20px ; color:black ; text-align:center">Create your Account</p><br/>
+			<p style="font-size:13px ; color:black; text-align:left"></p>
+
+@using (Html.BeginForm("signup1", "Home",FormMethod.Post))
+{
+                <label name="ln" id="ln">Name (characters 3 or more)</label> <br />
+                @Html.TextBoxFor(m => m.name, new { @id = "Name" })
+                <h7 style="color:red">@Html.ValidationMessageFor(model => model.name)</h7>
+                <br /><br />
+                    <label for="emailsignup" class="youmail" data-icon="e"> Email</label><br />
+                    @Html.TextBoxFor(m => m.email, new { @id = "email", type = "email" })
+                    <span id="emailStatus" style="color:red"></span>
+                    <h7 style="color:red">@Html.ValidationMessageFor(model => model.email)</h7>
+
+                    <br /><br /> 
+
+                    <label name="lp" id="lp">Enter Password (more than 3 characters)</label><br />
+                    @Html.PasswordFor(m => m.password, new { @id = "password" })
+                    <h7 style="color:red">@Html.ValidationMessageFor(model => model.password)</h7>
+
+                    <br /><br />
+                    <label name="lpr" id="lpr">PhoneNumber</label><br />
+
+                    @Html.TextBoxFor(m => m.phone, new { @id = "phone" })
+                    <h7 style="color:red">@Html.ValidationMessageFor(model => model.phone)</h7>
+                    <br />
+
+                    <label>CNIC(Without Dashes)</label><br />
+                    @Html.TextBoxFor(m => m.cnic, new { @id = "cnic" })
+                    <h7 style="color:red">@Html.ValidationMessageFor(model => model.cnic)</h7>
+                    <br />
+
+                    <label>City</label><br />
+                    @Html.TextBoxFor(m => m.city, new { @id = "city" })
+                    <h7 style="color:red">@Html.ValidationMessageFor(model => model.city)</h7>
+                    <br />
+
+                    <label>Country</label><br />
+                    @Html.TextBoxFor(m => m.country, new { @id = "country" })
+                    <h7 style="color:red">@Html.ValidationMessageFor(model => model.country)</h7>
+                    <br />
+
+                    <input style="text-align:center ; margin-left:70px; width:90px;" id="tmpSubmit" type="submit" name="submit" value="Sign Up">
+
+                    @Html.ValidationSummary(true);
+}
+
+
+            
+                </div>
+		<br/><br/><br/>
+		<br/><br/><br/>
+		<h1 id="head" style="color=black">One Account.<br/>Your Gateway to the World.</h1><br/>
+ 
+        <script>
+
+            $(document).ready(function () {
+                $("#tmpSubmit").attr("disabled", "disabled");
+                $('#email').focusout(function () {
+                    var userEmail = $('#email').val();
+                    if (!isValidEmailAddress(userEmail)) {
+                        $("#tmpSubmit").attr("disabled", "disabled");
+                        $('#emailStatus').text("Invalid Email");
+                        return false;
+                    }
+                    else {
+                        $('#emailStatus').text("");
+                    }
+                    //alert('User Name ='+ userName);
+
+                    $.getJSON("/home/CheckEmail?email=" + userEmail, function (data) {
+                        if (data == true) {
+                            $('#emailStatus').css({ "color": "red" });
+                            $('#emailStatus').text("This Email is being used twice try another");
+                            $("#tmpSubmit").attr("disabled", "disabled");
+                            return false;
+                        }
+                        else {
+                            //$('#emailStatus').css({ "color": "green" });
+                            //$('#emailStatus').text("User Name is available");
+                            $("#tmpSubmit").removeAttr("disabled");
+                            return true;
+                        }
+                        
+                    });
+
+                })
+
+
+            });
+
+        </script>
+        <script>
+            function isValidEmailAddress(emailAddress) {
+                var re = /\S+@@\S+\.\S+/;
+                return re.test(emailAddress);
+            };
+        </script>
+	
+	</body>
+	
+	
+</html>

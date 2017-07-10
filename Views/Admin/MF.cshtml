@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+@model List<WebApplication4.Models.Flight>
+<html>
+    <head>
+        <title>Admin Panel</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/cs1.css">
+		<style>
+		
+			label
+			{
+				display: inline-block;
+				float: left;
+				clear: left;
+				width: 250px;
+				text-align: right;
+			}
+			input 
+			{
+				display: inline-block;
+				float: left;
+			}
+		
+		</style>
+	</head>
+	
+	<body>
+	
+		<div id ="banner" >
+		<li><a id="normhead" href='@Url.Action("admin","Admin")'>Admin Panel</a></li></ul>
+		</div>
+		
+        <div id="nav">
+            <h1 id="normhead" style="text-align:center">PK Airlines</h1>
+            <br /><br /><br /><br />
+            <ul style="list-style-type:none">
+                <li><a id="list1" href='@Url.Action("MF","Admin")'>Manage Flights</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("MJ","Admin")'>Manage Jets</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("S","Admin")'>Settings</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("Feedback","Admin")'>FeedBack</a></li>
+                <br />
+                <li><a id="list1" href="/Admin/Alogout">log Out</a></li>
+                <br />
+            </ul>
+        </div>
+		
+		<div id="main">
+			<p>
+			Flight Management:
+			</p>
+		<form action="/Admin/MF1" method="post" />
+            <h3>@ViewBag.Error</h3>
+		
+			<label>Flight ID</label>
+			<input type="text" name="F_ID" value="">
+			
+			</br>
+			<label>Departing From</label>
+			<input type="text" name="Source" placeholder="<City>" value=""></br>
+			
+			<label></label>
+			<label>Arriving At</label>
+			<input type="text" name="Destination" placeholder="<City>" value=""></br>
+			
+			<label>Departure Date</label> 
+			<input type="datetime-local" name="dDate" >
+			
+			<br/>
+				
+			<label>Arrival Date</label>
+			<input type="datetime-local" name="aDate" >
+			
+			<br/>
+			
+			<label>Available Seats</label>
+			<input type="number" name="aSeats" value="">
+			
+			</br>
+			<label>Flight Cost</label>
+			<input type="number" name="fCost" value="">
+			
+			</br>
+			<label>Seat Cost</label>
+			<input type="number" name="sCost" value="">
+			
+			</br>
+			@*<label>Status</label>
+			<input type="text" name="Status" value="">*@
+			
+			</br><br/><br/><br/>
+			<input style="text-align:center ; margin-left:200px; width:90px;" type="submit" name="submitA" value ="Add A Flight"><br/><br/>
+		</form>
+		
+		
+			<hr width="80%">
+		
+		<form action="/Admin/MF2" method="post" />
+		
+			<label>Flight ID</label>
+			<input type="text" name="F_ID"  value="">
+			
+			</br><br/>
+			<input style="text-align:center ; margin-left:200px; width:115px;" type="submit" name="submitR" value ="Remove A Flight"><br/><br/>
+		</form>
+		
+		
+			<hr width="80%">
+			
+		@*<form action="MF.php" method="post" />
+		
+			<label>Flight ID</label>
+			<input type="text" name="F_ID" value="">
+			
+			<label>Status</label> <br/>
+			<input type="text" name="Status" value="">
+			
+			</br><br/>
+			<input style="text-align:center ; margin-left:200px; width:135px;"type="submit" name="submitS" value ="Update Flight Status">
+		</form>*@
+		
+		<table id = "t1" style="width:95%">
+			<tr>
+				<th>Flight ID</th>
+				<th>Source</th>
+				<th>Destination</th>
+				<th>Departure Date</th>
+				<th>Arrival Date</th>
+				<th>Price($)</th>
+                <th>Edit?</th>
+
+			</tr>
+		
+						@{
+                            foreach (var m in Model)
+                            {
+                                <tr>
+                                    <td>@m.fid</td>
+                                    <td>@m.source</td>
+                                    <td>@m.destination</td>
+                                    <td>@m.dep_date</td>
+                                    <td>@m.arr_date</td>
+                                    <td>@m.seat_cost</td>
+                                    <td>
+                                        <a href="/Admin/editFlight?fid=@m.fid"><h5>Edit</h5></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+						
+				<br/>
+		
+		
+		
+			<hr width="80%">
+		
+		
+		
+		</div>
+	</body>

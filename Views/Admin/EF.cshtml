@@ -1,0 +1,169 @@
+@model WebApplication4.Models.Flight
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Panel</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/cs1.css">
+		<style>
+		
+			label
+			{
+				display: inline-block;
+				float: left;
+				clear: left;
+				width: 250px;
+				text-align: right;
+			}
+			input 
+			{
+				display: inline-block;
+				float: left;
+			}
+		
+		</style>
+	</head>
+	
+	<body>
+	
+		<div id ="banner" >
+		<li><a id="normhead" href='@Url.Action("admin","Admin")'>Admin Panel</a></li></ul>
+		</div>
+		
+		<div id="nav">
+			<h1 id="normhead" style="text-align:center">PK Airlines</h1>
+			<br/><br/><br/><br/>
+            <ul style="list-style-type:none">
+                <li><a id="list1" href='@Url.Action("MF","Admin")'>Manage Flights</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("MJ","Admin")'>Manage Jets</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("S","Admin")'>Settings</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("Feedback","Admin")'>Settings</a></li>
+                <br />
+                <li><a id="list1" href="/Admin/Alogout">log Out</a></li>
+                <br />
+            </ul>
+		</div>
+		
+		<div id="main">
+			<p>
+			Flight Management edit portal:
+			</p>
+		<form action="/Admin/EF1" method="post" />
+		
+			<label >Flight ID </label>
+           <!-- <label>1@Model.fid </label>-->
+			
+            <input type="hidden" id="fid" name="fid" value="@Model.fid"/>
+
+			</br>
+			<label>Departing From</label>
+			<input type="text" name="Source" placeholder="<City>" value="@Model.source"></br>
+			
+			<label></label>
+			<label>Arriving At</label>
+			<input type="text" name="Destination" placeholder="<City>" value="@Model.destination"></br>
+			
+			<label>Departure Date</label> 
+			<input type="datetime" name="dDate" value="@Model.dep_date" >
+			
+			<br/>
+				
+			<label>Arrival Date</label>
+			<input type="datetime" name="aDate" value="@Model.arr_date">
+			
+			<br/>
+			
+			<label>Available Seats</label>
+			<input type="number" name="aSeats" value="@Model.avaliable_seats">
+			
+			</br>
+			<label>Flight Cost</label>
+			<input type="number" name="fCost" value="@Model.flight_cost">
+			
+			</br>
+			<label>Seat Cost</label>
+			<input type="number" name="sCost" value="@Model.seat_cost">
+			
+			</br>
+            .
+
+
+
+			
+			
+			</br><br/><br/><br/>
+			<input style="text-align:center ; margin-left:200px; width:90px;" type="submit" name="submitA" value ="Edit A Flight"><br/><br/>
+		</form>
+		
+		
+		<!--	<hr width="80%">
+		
+		<form action="/Home/MF2" method="post" />
+		
+			<label>Flight ID</label>
+			<input type="text" name="F_ID"  value="">
+			
+			</br><br/>
+			<input style="text-align:center ; margin-left:200px; width:115px;" type="submit" name="submitR" value ="Remove A Flight"><br/><br/>
+		</form>
+		
+		
+			<hr width="80%">
+			
+		<form action="MF.php" method="post" />
+		
+			<label>Flight ID</label>
+			<input type="text" name="F_ID" value="">
+			
+			<label>Status</label> <br/>
+			<input type="text" name="Status" value="">
+			
+			</br><br/>
+			<input style="text-align:center ; margin-left:200px; width:135px;"type="submit" name="submitS" value ="Update Flight Status">
+		</form>
+		
+		<table id = "t1" style="width:95%">
+			<tr>
+				<th>Flight ID</th>
+				<th>Source</th>
+				<th>Destination</th>
+				<th>Departure Date</th>
+				<th>Arrival Date</th>
+				<th>Departure Time</th>
+				<th>Arrival Time</th>
+				<th>Price($)</th>
+
+			</tr>
+		
+						@{
+                            //foreach (var m in Model)
+                            //{
+                                <tr>
+                                    <td><1@m.fid</td>
+                                    <td><1@m.source</td>
+                                    <td><1@m.destination</td>
+                                    <td><1@m.dep_date</td>
+                                    <td><1@m.arr_date</td>
+                                    <td><1@m.dep_time</td>
+                                    <td><1@m.arr_time</td>
+                                    <td><1@m.seat_cost</td>
+                                </tr>
+                            //}
+
+                        }
+						
+				<br/>
+		
+		
+		
+			<hr width="80%">
+		
+		-->
+		
+		</div>
+	</body>

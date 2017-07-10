@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+@model List<WebApplication4.Models.Admin>
+<html>
+    <head>
+        <title>Admin Panel</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="~/Content/cs1.css">
+		<style>
+		
+			label
+			{
+				display: inline-block;
+				float: left;
+				clear: left;
+				width: 250px;
+				text-align: right;
+			}
+			input 
+			{
+				display: inline-block;
+				float: left;
+			}
+		
+		</style>
+	</head>
+	
+	<body>
+	
+				<div id ="banner" >
+		<li><a id="normhead" href='@Url.Action("admin","Admin")'>Admin Panel</a></li></ul>
+		</div>
+		
+		<div id="nav">
+			<h1 id="normhead" style="text-align:center">PK Airlines</h1>
+			<br/><br/><br/><br/>
+            <ul style="list-style-type:none">
+                <li><a id="list1" href='@Url.Action("MF","Admin")'>Manage Flights</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("MJ","Admin")'>Manage Jets</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("S","Admin")'>Settings</a></li>
+                <br />
+                <li><a id="list1" href='@Url.Action("Feedback","Admin")'>FeedBack</a></li>
+                <br />
+                <li><a id="list1" href="/Admin/Alogout">log Out</a></li>
+                <br />
+            </ul>
+		</div>
+		
+		<div id="main">
+			<p>
+			</p>
+			<form action ="/Admin/S1" method = "post" />
+			
+            <h5>@ViewBag.Error</h5>
+			<label>Enter new Password</label>
+			<input type="password" name="pass">
+			
+			</br>
+			</br>
+			<label>Confirm Password</label>
+			<input type="password" style="width:200px;" name="pass2">
+			
+			</br>
+			</br><br/>	
+			</p>
+			<input style="text-align:center ; margin-left:200px; width:200px;" type="submit" name = "submit" value="Change password">
+
+			
+			</br></br>
+			<hr width="80%">
+			</form>
+
+
+			<form action ="/Admin/S2" method = "post" />
+            <h5>@ViewBag.Error2</h5>
+			<label>Enter Admin User Name </label>
+			<input type="text" name="adId">
+			
+			</br>
+			</br>
+
+			<label>Enter new Password</label>
+			<input type="password" name="pass">
+			
+			</br>
+			</br>
+
+
+
+			<label>Confirm Password</label>
+			<input type="password" style="width:200px;" name="pass2">
+			
+			</br>
+			</br><br/>	
+			</p>
+			<input style="text-align:center ; margin-left:200px; width:200px;" type="submit" name = "submitA" value="Add Admin">
+			
+		</form>
+			<hr width="80%">
+			</br>
+			
+
+			<form action ="/Admin/S3" method = "post" />
+
+			<label>Enter Admin ID</label>
+			<input type="text" name="aid">
+			
+			</br>
+			</br>
+
+			
+			
+			</br>
+
+			
+		
+			<input style="text-align:center ; margin-left:200px; width:200px;" type="submit" name = "submitD" value="Delete Admin">
+			
+		</form>
+        </br></br>
+        </br></br>
+      <  <table id="t1" style="width:30%">
+            <tr>
+                <th>Admin ID</th>
+                <th>Admin Name</th>
+            </tr>
+             @{  
+                foreach (var m in Model)
+                {
+
+					<tr>
+						<td>@m.aid</td>
+						<td>@m.name</td>
+							
+							
+					</tr>
+                }
+
+             }     
+          
+
+
+</div>
+	</body>
+	
